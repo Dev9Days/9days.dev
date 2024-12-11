@@ -9,7 +9,7 @@ const Github = () => {
       width="30"
       height="30"
       viewBox="0 0 438.549 438.549"
-      // fill=""
+      fill={'var(--foreground)'}
     >
       <g>
         <path
