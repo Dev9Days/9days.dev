@@ -15,6 +15,8 @@ const ThemedBody = ({
   lastTheme: ThemeColors;
   children: React.ReactNode;
 }) => {
+  const { setTheme, setThemeList } = actions;
+
   useEffect(() => {
     const dark = ThemeColors.Dark;
     const light = ThemeColors.Light;
@@ -22,13 +24,13 @@ const ThemedBody = ({
 
     const updateThemeList = () => {
       if (mql.matches) {
-        actions.setThemeList((themeList) => ({
+        setThemeList((themeList) => ({
           ...themeList,
           [dark]: { ...themeList[dark], isSystem: true },
           [light]: { ...themeList[light], isSystem: false },
         }));
       } else {
-        actions.setThemeList((themeList) => ({
+        setThemeList((themeList) => ({
           ...themeList,
           [dark]: { ...themeList[dark], isSystem: false },
           [light]: { ...themeList[light], isSystem: true },
@@ -41,9 +43,9 @@ const ThemedBody = ({
     if (lastTheme === ThemeColors.System) {
       const updateTheme = () => {
         if (mql.matches) {
-          actions.setTheme(dark);
+          setTheme(dark);
         } else {
-          actions.setTheme(light);
+          setTheme(light);
         }
       };
       updateTheme();
@@ -56,7 +58,7 @@ const ThemedBody = ({
     return () => {
       mql.removeEventListener('change', updateThemeList);
     };
-  }, []);
+  }, [setTheme, setThemeList, lastTheme]);
 
   return (
     <body className={`theme-${state.theme.toLowerCase()}`}>
