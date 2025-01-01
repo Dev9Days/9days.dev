@@ -15,7 +15,7 @@ const ThemeContext = createContext<ThemeContextType>({
   actions: { setTheme: () => {}, setThemeList: () => {} },
 });
 
-const ThemeProvider = ({ lastTheme, children }: { lastTheme: ThemeColors; children: ReactNode }) => {
+export const ThemeProvider = ({ lastTheme, children }: { lastTheme: ThemeColors; children: ReactNode }) => {
   const [theme, setTheme] = useState(lastTheme || ThemeColors.System);
   const [_themeList, setThemeList] = useState(themeList);
   const value = {
@@ -24,9 +24,6 @@ const ThemeProvider = ({ lastTheme, children }: { lastTheme: ThemeColors; childr
   };
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 };
-
-const { Consumer: ThemeConsumer } = ThemeContext;
-export { ThemeProvider, ThemeConsumer };
 
 export const useTheme = () => {
   const context = useContext(ThemeContext);
