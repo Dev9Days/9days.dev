@@ -4,7 +4,11 @@ import { ThemeColors } from '@/theme/themes';
 import { themeItemList, vars } from './theme-list.css';
 import { ThemeContextType } from '@/theme/theme-context';
 
-const ThemeList = ({ state, actions }: ThemeContextType) => {
+interface IProps {
+  themeData: ThemeContextType;
+}
+const ThemeList = ({ themeData }: IProps) => {
+  const { state, actions } = themeData;
   const { theme, themeList } = state;
   const selectedTheme = themeList[theme];
   const arrThemeList = Object.entries(themeList).filter(([themeKey]) => themeKey !== ThemeColors.System);
