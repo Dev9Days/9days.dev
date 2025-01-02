@@ -1,9 +1,10 @@
 import { createVar, style } from '@vanilla-extract/css';
 
 const backgroundColor = createVar();
+const fontColor = createVar();
 const totalHeight = createVar();
 
-export const themeItemList = style({
+export const themeListContainer = style({
   overflow: 'hidden',
   position: 'absolute',
   top: '12px',
@@ -14,8 +15,8 @@ export const themeItemList = style({
   height: '40px',
   borderRadius: '6px',
   transition: 'height 0.3s linear',
+  backgroundColor,
   ':hover': {
-    backgroundColor,
     height: totalHeight,
   },
   '@media': {
@@ -25,4 +26,12 @@ export const themeItemList = style({
   },
 });
 
-export const vars = { backgroundColor, totalHeight };
+export const themeList = style({
+  width: '100%',
+  height: '100%',
+  ':hover': {
+    backgroundColor: fontColor,
+  },
+});
+
+export const vars = { backgroundColor, fontColor, totalHeight };
