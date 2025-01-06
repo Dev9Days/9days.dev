@@ -9,6 +9,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "9days.dev@workspace:."
   dependencies:
+    "@types/js-cookie": "npm:^3"
     "@types/node": "npm:^20"
     "@types/react": "npm:^19.0.1"
     "@types/react-dom": "npm:^19.0.2"
@@ -17,6 +18,7 @@ __metadata:
     "@vanilla-extract/next-plugin": "npm:^2.4.7"
     eslint: "npm:^8"
     eslint-config-next: "npm:15.0.2"
+    js-cookie: "npm:^3.0.5"
     next: "npm:15.0.2"
     postcss: "npm:^8"
     prettier: "npm:^3.3.3"
@@ -1194,6 +1196,13 @@ __metadata:
   version: 1.0.6
   resolution: "@types/estree@npm:1.0.6"
   checksum: 10c0/cdfd751f6f9065442cd40957c07fd80361c962869aa853c1c2fd03e101af8b9389d8ff4955a43a6fcfa223dd387a089937f95be0f3eec21ca527039fd2d9859a
+  languageName: node
+  linkType: hard
+
+"@types/js-cookie@npm:^3":
+  version: 3.0.6
+  resolution: "@types/js-cookie@npm:3.0.6"
+  checksum: 10c0/173afaf5ea9d86c22395b9d2a00b6adb0006dcfef165d6dcb0395cdc32f5a5dcf9c3c60f97194119963a15849b8f85121e1ae730b03e40bc0c29b84396ba22f9
   languageName: node
   linkType: hard
 
@@ -3611,6 +3620,13 @@ __metadata:
   bin:
     jiti: bin/jiti.js
   checksum: 10c0/05b9ed58cd30d0c3ccd3c98209339e74f50abd9a17e716f65db46b6a35812103f6bde6e134be7124d01745586bca8cc5dae1d0d952267c3ebe55171949c32e56
+  languageName: node
+  linkType: hard
+
+"js-cookie@npm:^3.0.5":
+  version: 3.0.5
+  resolution: "js-cookie@npm:3.0.5"
+  checksum: 10c0/04a0e560407b4489daac3a63e231d35f4e86f78bff9d792011391b49c59f721b513411cd75714c418049c8dc9750b20fcddad1ca5a2ca616c3aca4874cce5b3a
   languageName: node
   linkType: hard
 

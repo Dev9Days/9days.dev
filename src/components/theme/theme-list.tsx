@@ -1,4 +1,5 @@
 import { assignInlineVars } from '@vanilla-extract/dynamic';
+import Cookie from 'js-cookie';
 import ThemeItem from './theme-item';
 import { ThemeColors } from '@/theme/themes';
 import { themeListContainer, themeList as themeListStyle, vars } from './theme-list.css';
@@ -16,7 +17,7 @@ const ThemeList = ({ themeData }: IProps) => {
   const onClick = (themeKey: string) => {
     if (theme !== themeKey) {
       actions.setTheme(themeKey as ThemeColors);
-      document.cookie = `theme=${themeKey}; path=/;`;
+      Cookie.set('theme', themeKey);
     }
   };
   return (
