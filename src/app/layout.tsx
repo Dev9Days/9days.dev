@@ -1,32 +1,23 @@
-import type { Metadata } from 'next';
-import Header from '@/components/header';
-import Navigation from '@/components/navigation';
-import Anchors from '@/components/anchors';
+import { cookies } from 'next/headers';
+import { ThemeProvider } from '@/theme/theme-context';
+import { ThemeColors } from '@/theme/themes';
+import ThemedBody from '@/components/theme/themed-body';
 import './globals.css';
 
-export const metadata: Metadata = {
-  title: '9days.dev',
-  description: '',
-};
-
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookie = await cookies();
+  const theme = cookie.get('theme');
+  const lastTheme = (theme?.value || ThemeColors.System) as ThemeColors;
+
   return (
     <html lang="ko">
-      <body className="">
-        <div className="flex flex-col items-center">
-          <div className="w-3/5">
-            <Header />
-            <div className="flex">
-              <Navigation />
-              {children}
-            </div>
-          </div>
-        </div>
-      </body>
+      <ThemeProvider lastTheme={lastTheme}>
+        <ThemedBody lastTheme={lastTheme}>{children}</ThemedBody>
+      </ThemeProvider>
     </html>
   );
 }
