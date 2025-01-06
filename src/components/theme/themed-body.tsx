@@ -1,20 +1,12 @@
+'use client';
 import React, { useEffect } from 'react';
 import Header from '../header';
 import Navigation from '../navigation';
-import { ThemeContextType } from '@/theme/theme-context';
+import { useTheme } from '@/theme/theme-context';
 import { ThemeColors } from '@/theme/themes';
 
-const ThemedBody = ({
-  state,
-  actions,
-  lastTheme,
-  children,
-}: {
-  state: ThemeContextType['state'];
-  actions: ThemeContextType['actions'];
-  lastTheme: ThemeColors;
-  children: React.ReactNode;
-}) => {
+const ThemedBody = ({ lastTheme, children }: { lastTheme: ThemeColors; children: React.ReactNode }) => {
+  const { state, actions } = useTheme();
   const { setTheme, setThemeList } = actions;
 
   useEffect(() => {
@@ -67,7 +59,7 @@ const ThemedBody = ({
           <Header />
           <div className="flex">
             <Navigation />
-            {children}
+            <div className="">{children}</div>
           </div>
         </div>
       </div>

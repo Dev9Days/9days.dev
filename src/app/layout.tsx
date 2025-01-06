@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers';
 import { ThemeProvider } from '@/theme/theme-context';
 import { ThemeColors } from '@/theme/themes';
-import ThemeContainer from '@/components/theme/theme-container';
+import ThemedBody from '@/components/theme/themed-body';
 import './globals.css';
 
 export default async function RootLayout({
@@ -16,7 +16,7 @@ export default async function RootLayout({
   return (
     <html lang="ko">
       <ThemeProvider lastTheme={lastTheme}>
-        <ThemeContainer lastTheme={lastTheme}>{children}</ThemeContainer>
+        <ThemedBody lastTheme={lastTheme}>{children}</ThemedBody>
       </ThemeProvider>
     </html>
   );
