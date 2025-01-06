@@ -13,42 +13,27 @@ const ThemedBody = ({ lastTheme, children }: { lastTheme: ThemeColors; children:
     const dark = ThemeColors.Dark;
     const light = ThemeColors.Light;
     const mql = window.matchMedia('(prefers-color-scheme: dark)');
+    const isMatch = mql.matches;
 
     const updateThemeList = () => {
-      if (mql.matches) {
-        setThemeList((themeList) => ({
-          ...themeList,
-          [dark]: { ...themeList[dark], isSystem: true },
-          [light]: { ...themeList[light], isSystem: false },
-        }));
-      } else {
-        setThemeList((themeList) => ({
-          ...themeList,
-          [dark]: { ...themeList[dark], isSystem: false },
-          [light]: { ...themeList[light], isSystem: true },
-        }));
+      setThemeList((themeList) => ({
+        ...themeList,
+        [dark]: { ...themeList[dark], isSystem: isMatch },
+        [light]: { ...themeList[light], isSystem: !isMatch },
+      }));
+    };
+    const updateTheme = () => {
+      if (lastTheme === ThemeColors.System) {
+        setTheme(isMatch ? dark : light);
       }
     };
     updateThemeList();
+    updateTheme();
     mql.addEventListener('change', updateThemeList);
-
-    if (lastTheme === ThemeColors.System) {
-      const updateTheme = () => {
-        if (mql.matches) {
-          setTheme(dark);
-        } else {
-          setTheme(light);
-        }
-      };
-      updateTheme();
-      mql.addEventListener('change', updateTheme);
-      return () => {
-        mql.removeEventListener('change', updateThemeList);
-        mql.removeEventListener('change', updateTheme);
-      };
-    }
+    mql.addEventListener('change', updateTheme);
     return () => {
       mql.removeEventListener('change', updateThemeList);
+      mql.removeEventListener('change', updateTheme);
     };
   }, [setTheme, setThemeList, lastTheme]);
 
