@@ -13,18 +13,18 @@ const ThemedBody = ({ lastTheme, children }: { lastTheme: ThemeColors; children:
     const dark = ThemeColors.Dark;
     const light = ThemeColors.Light;
     const mql = window.matchMedia('(prefers-color-scheme: dark)');
-    const isMatch = mql.matches;
+    const isDarkMdoe = mql.matches;
 
     const updateThemeList = () => {
       setThemeList((themeList) => ({
         ...themeList,
-        [dark]: { ...themeList[dark], isSystem: isMatch },
-        [light]: { ...themeList[light], isSystem: !isMatch },
+        [dark]: { ...themeList[dark], isSystem: isDarkMdoe },
+        [light]: { ...themeList[light], isSystem: !isDarkMdoe },
       }));
     };
     const updateTheme = () => {
       if (lastTheme === ThemeColors.System) {
-        setTheme(isMatch ? dark : light);
+        setTheme(isDarkMdoe ? dark : light);
       }
     };
     updateThemeList();
