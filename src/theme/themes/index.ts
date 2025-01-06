@@ -13,7 +13,7 @@ export enum ThemeColors {
   Mintchoco = 'Mintchoco',
   Warm = 'Warm',
 }
-export type ThemeMap = { [color in ThemeColors]: ThemeStyle };
+export type ThemeMap = Record<ThemeColors, ThemeStyle>;
 export const themeList: ThemeMap = {
   System: { colors: { fontColor: '', backgroundColor: '' }, isSystem: false },
   Light: { colors: { fontColor: '#1e1e1e', backgroundColor: '#ffffff' }, isSystem: false },
